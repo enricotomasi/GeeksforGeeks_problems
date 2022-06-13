@@ -15,15 +15,13 @@ public:
 	    // Your code goes here
 	    int ans = 0;
 	    
-	    for (int i=0; i<s.length();i++)
-	    {
-	        ans++;
-	        for (int j= i+1; j<s.length(); j++)
-	        {
-	            if (s.at(i) == s.at(j)) ans++;
-	        }
-	    }
+	    int mappa[256] = {};
 	    
+	    for (int i=0; i<s.length(); i++)
+	    {
+	        mappa[s[i]]++;
+	        ans += mappa[s[i]];
+	    }
 	    
 	    
 	    return ans;
