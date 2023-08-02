@@ -1,0 +1,43 @@
+#User function Template for python3
+
+def countSubsets(a, n):
+    # code here
+    b = list(dict.fromkeys(a))    
+    
+    el = 0
+    for it in b:
+        if it % 2 == 0:
+            el +=1
+    
+    ans = (int(pow(2, el))) - 1
+    
+    return ans
+    
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+def main():
+
+    T = int(input())
+
+    while(T > 0):
+        n = int(input())
+        a = [int(x) for x in input().strip().split()]
+        print(countSubsets(a, n))
+
+        T -= 1
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+    
+# } Driver Code Ends
