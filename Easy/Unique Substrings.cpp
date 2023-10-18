@@ -1,45 +1,66 @@
 //{ Driver Code Starts
-//Initial Template for C++
+
+
 
 #include<bits/stdc++.h>
 using namespace std;
 
 // } Driver Code Ends
-//User function Template for C++
 
 class Solution
 {
-    public:
-    int unique_substring(string str)
-    {
-        // Your code here
-        unordered_set<string> arr;
-        
-        for (int i=0; i<str.length(); i++)
-        {
-            for (int j=0; j<str.length(); j++)
+	public:
+		long int unique_substring_sum(string s, int k)
+		{
+		    // Code here
+		    int n = s.size();
+		    
+		    if (n % k != 0) return -1;
+            
+            set<string> mappa;
+
+            for (int i = 0; i < n; i += k)
             {
-                arr.insert(str.substr(i, j));
+                mappa.insert(s.substr(i, k));
             }
-        }
-        
-        return arr.size();
-        
-        
-    }
+            
+            long int ans = 0;
+            
+            for (auto i: mappa)
+            {
+                long int p = i.size() - 1;
+                long int somma = 0;
+                long int q = 0;
+                
+                while (p >= 0)
+                {
+                    if (i[p] == '1') somma += pow(2, q);
+                    q++;
+                    p--;
+                }
+            
+                ans += somma;
+            } 
+            
+            return ans;
+		}
 };
 
-//{ Driver Code Starts.
 
+//{ Driver Code Starts.
 int main(){
-    int t;
-    cin>>t;
-    while(t-->0){
-        string str;
-        cin>>str;
+    int T;
+    cin >> T;
+    while(T--)
+    {
+    	string s;
+    	int k;
+    	cin >> s >> k;
         Solution ob;
-        int ans= ob.unique_substring(str);
-        cout<<ans<<endl;
+    	long int ans  = ob.unique_substring_sum(s, k);
+    	cout << ans << "\n";
     }
+	return 0;
 }
+
 // } Driver Code Ends
