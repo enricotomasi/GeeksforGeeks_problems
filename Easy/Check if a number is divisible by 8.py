@@ -1,0 +1,33 @@
+#User function Template for python3
+
+class Solution:
+    def DivisibleByEight(self, s):
+        #code here
+        n = len(s)
+        
+        if n < 4:
+            dec = int(s)
+            if dec % 8 == 0:
+                return 1
+            else:
+                return -1
+        
+        last3 = s[-3:]
+        dec3 = int(last3)
+        
+        if dec3 == 0 or dec3 % 8 == 0:
+            return 1
+        
+        return -1
+        
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__=='__main__':
+    t=int(input())
+    for _ in range(t):
+        S=input()
+        ob=Solution()
+        print(ob.DivisibleByEight(S))
+# } Driver Code Ends
